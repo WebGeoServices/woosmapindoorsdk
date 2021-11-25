@@ -1,5 +1,5 @@
 //
-//  Enviroment.h
+//  WoosmapIndoorUtils.h
 //  Woosmap Indoor
 
 #import <Foundation/Foundation.h>
@@ -23,9 +23,7 @@ extern NSString *const kFONTCOLORFORFLOOR;
 extern NSString *const kBlueDotIconPath;
 extern NSString *const kResourceBundle;
 extern NSString *const kCOLORFORCOVEREDPATH;
-//BOOL isUserInsideMall;
-//BOOL isLocationServiceEnabled;
-@interface AlphaEnvironment : NSObject
+@interface WoosmapIndoorUtils : NSObject
 {
     NSDate *applicationStartTime;
 }
@@ -46,7 +44,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
  *
  *  @return Enviroment object
  */
-+ (AlphaEnvironment *)instance;
++ (WoosmapIndoorUtils *)instance;
 /**
  * @deprecated
  *  Resource path

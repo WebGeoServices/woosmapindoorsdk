@@ -1,5 +1,5 @@
 //
-//  CacheManager.h
+//  SDKCacheManager.h
 //  Woosmap Indoor
 
 #import <Foundation/Foundation.h>
@@ -7,7 +7,7 @@
 /**
  Cache manager
  */
-@interface AlphaCacheManager : NSObject{}
+@interface SDKCacheManager : NSObject{}
 
 /**
  Get Cache data from app

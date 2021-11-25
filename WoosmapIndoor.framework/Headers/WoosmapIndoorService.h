@@ -1,5 +1,5 @@
 /*
- IndoorMapService.h
+ WoosmapIndoorService.h
   Woosmap Indoor
 */
 

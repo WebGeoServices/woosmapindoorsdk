@@ -1,5 +1,5 @@
 //
-//  Preferences.h
+//  WoosmapIndoorPreferences.h
 //  Woosmap Indoor
 
 #import <Foundation/Foundation.h>
@@ -22,7 +22,7 @@ extern NSString *const PREF_BUDDYOPTIN;
 extern NSString *const PREF_CACHEVERSION;
 extern NSString *const PREF_COUNTRYCODE;
 
-@interface Preferences : NSObject
+@interface WoosmapIndoorPreferences : NSObject
 
 
 /**

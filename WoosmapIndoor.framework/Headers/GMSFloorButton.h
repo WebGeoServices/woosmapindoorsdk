@@ -4,7 +4,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GoogleFloorButton : UIButton{
+@interface GMSFloorButton : UIButton{
 }
 /**
  *  Sets count of POIs,amenities on floor bar

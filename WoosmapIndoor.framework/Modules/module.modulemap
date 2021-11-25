@@ -1,5 +1,4 @@
 framework module WoosmapIndoor {
-    header "AnimatingTrainMarker.h"
     umbrella header "WoosmapIndoor.h"
     export *
     module * { export *}

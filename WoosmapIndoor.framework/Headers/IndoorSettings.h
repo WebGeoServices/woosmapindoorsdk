@@ -1,5 +1,5 @@
 //
-//  MapProperties.h
+//  IndoorSettings.h
 //  Woosmap Indoor
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
@@ -9,14 +9,14 @@
 /**
  Internal map Information
  */
-@interface IndoorMapProperties : NSObject
+@interface IndoorSettings : NSObject
 
 /**
  Internal map properties
 
  @return
  */
-+ (nonnull IndoorMapProperties *)instance;
++ (nonnull IndoorSettings *)instance;
 
 /**
  New Map instance
@@ -440,6 +440,9 @@ Use Reroute by Heading
 
 /// Center map in navigation Mode
 -(BOOL)enableAutoCenteringInNavMode;
+
+/// Show Google map 3d buldings on map for external view
+-(BOOL)show3DBuildings;
 
 /**
  * Cleanup IndoorMap setting from memory
