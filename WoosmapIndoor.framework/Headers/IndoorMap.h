@@ -653,6 +653,11 @@ Called when search route function failed
 @property (nonatomic,assign) UIEdgeInsets logoPadding;
 
 /**
+ * This property control to display area lables on map during POI navigation
+ */
+@property (nonatomic,readwrite) BOOL displayPOIWithStopOverNavigation;
+
+/**
  *  Sets the navigation mode.
  *
  *  @param mode Navigation mode type (NavigationMode_None,NavigationMode_Preview,NavigationMode_TurnByTurn)
