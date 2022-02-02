@@ -27,7 +27,7 @@ extern NSString *const PREF_COUNTRYCODE;
 
 /**
  To get value of the prefernce
-
+ 
  @param key The name of the preference
  @return Returns the string value of preference
  */
@@ -35,7 +35,7 @@ extern NSString *const PREF_COUNTRYCODE;
 
 /**
  To set preferences
-
+ 
  @param key The name of the preference
  @param preferencesValue The value of the preference
  @return Returns whether prefernce is set or not
@@ -44,7 +44,7 @@ extern NSString *const PREF_COUNTRYCODE;
 
 /**
  To set attributes
-
+ 
  @param key The name of the attribute
  @param preferencesValue The value of the attribute
  @return Returns whether attribute is set or not
@@ -53,7 +53,7 @@ extern NSString *const PREF_COUNTRYCODE;
 
 /**
  To get user name
-
+ 
  @return Returns name of user
  */
 +(NSString *)getOwnerName;

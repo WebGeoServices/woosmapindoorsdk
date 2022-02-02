@@ -1,7 +1,7 @@
 /*
-  TrackingAreaMarker.h
-  Woosmap Indoor
-*/
+ TrackingAreaMarker.h
+ Woosmap Indoor
+ */
 
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -19,7 +19,7 @@
 
 /**
  Draws an area on the map
-
+ 
  @param areaCorners An array of coordinates
  */
 -(void) addAreaPoints:(NSArray *)areaCorners;

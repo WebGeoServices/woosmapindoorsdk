@@ -23,7 +23,7 @@
 
 /**
  Translate word into langiage
-
+ 
  @param word word in english
  @return in local language
  */

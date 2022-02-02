@@ -658,6 +658,11 @@ Called when search route function failed
 @property (nonatomic,readwrite) BOOL displayPOIWithStopOverNavigation;
 
 /**
+ * This property control to Navigation mode handicap/non handicap
+ */
+@property (nonatomic,readwrite) BOOL preferaccessibility;
+
+/**
  *  Sets the navigation mode.
  *
  *  @param mode Navigation mode type (NavigationMode_None,NavigationMode_Preview,NavigationMode_TurnByTurn)

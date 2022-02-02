@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @interface InAppNotification : NSObject{
-   
+    
 }
 @property (readonly) BOOL reloadFromDB;
 @property (nonatomic,retain) NSString *notificationid;
@@ -17,7 +17,7 @@
 
 /**
  To get notification data
-
+ 
  @return notification data
  */
 -(NSMutableDictionary *)getnotificationDetails;

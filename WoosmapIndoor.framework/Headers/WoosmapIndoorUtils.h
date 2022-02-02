@@ -304,7 +304,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 
 /**
  get location service enable or not
-
+ 
  @return BOOL value
  */
 -(BOOL)getLocationServiceEnabled;
@@ -318,7 +318,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 
 /**
  user location icon path
-
+ 
  @return image file name in resource buindle
  */
 - (NSString *)getBlueDotIconPath;

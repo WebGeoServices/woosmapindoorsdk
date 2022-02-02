@@ -1,7 +1,7 @@
 /*!
-    PathFormatter.h
-    Woosmap Indoor
-*/
+ PathFormatter.h
+ Woosmap Indoor
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -9,7 +9,7 @@
  *  Describes the drawing style of path.
  */
 @interface PathFormatter : NSObject{
-
+    
 }
 /**
  *  Sets the color of the path.

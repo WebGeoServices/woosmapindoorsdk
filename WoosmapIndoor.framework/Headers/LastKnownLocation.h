@@ -22,14 +22,14 @@
 
 /**
  Last location instance
-
+ 
  @return Location service
  */
 + (LastKnownLocation *)instance;
 
 /**
  Get known user location
-
+ 
  @param mapid maprefrence
  @return mapid
  */
@@ -37,14 +37,14 @@
 
 /**
  set new location
-
+ 
  @param location location
  */
 -(void)setLocation:(CGPoint)location;
 
 /**
  set  location
-
+ 
  @param lat latitude
  @param lng longitude
  */
@@ -52,14 +52,14 @@
 
 /**
  get latitude
-
+ 
  @return latitude
  */
 -(double)getlatitude;
 
 /**
  get longitude
-
+ 
  @return longitude
  */
 -(double)getlongitude;

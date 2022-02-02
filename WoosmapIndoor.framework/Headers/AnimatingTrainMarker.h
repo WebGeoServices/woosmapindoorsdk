@@ -1,7 +1,7 @@
 /*!
-  AnimatingTrainMarker.h
-  Woosmap Indoor
-*/
+ AnimatingTrainMarker.h
+ Woosmap Indoor
+ */
 
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -33,7 +33,7 @@
 
 /**
  Start train running animation
-
+ 
  @param map mapview
  */
 -(void)start:(GMSMapView *)map;

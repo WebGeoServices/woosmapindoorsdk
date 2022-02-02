@@ -11,7 +11,7 @@
 
 /**
  Get Cache data from app
-
+ 
  @param days day count
  @param cacheid cache id
  @return List of Cache Data
@@ -20,7 +20,7 @@
 
 /**
  Get Cache data from app
-
+ 
  @param days day count
  @param cacheid cache id
  @return Dictionary of cache data
@@ -29,7 +29,7 @@
 
 /**
  Get Cache data from app
-
+ 
  @param minutes minute count
  @param cacheid cache id
  @return List of cache data
@@ -38,7 +38,7 @@
 
 /**
  add Data in cahce
-
+ 
  @param data list of data
  @param cacheid cache refrence
  @return True/False
@@ -47,7 +47,7 @@
 
 /**
  Add data in Cache
-
+ 
  @param data Data Dictionary
  @param cacheid cache id
  @return True/False
@@ -56,7 +56,7 @@
 
 /**
  Check cache expired
-
+ 
  @param days day count
  @param inDirectory location of cache file
  @param cacheid cache refrence
@@ -66,7 +66,7 @@
 
 /**
  Delete From cache file
-
+ 
  @param cacheid Cache id
  @return True/False
  */
