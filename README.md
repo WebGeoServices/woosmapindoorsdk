@@ -318,7 +318,7 @@ override func viewDidLoad(){
 When the client application makes a call to ```searching:``` method of the ```MapSearch``` class, the SDK will notify the client application by triggering the ```searchDidStartLoad:``` method of the MapSearchDelegate.
 
 ``` Objective-c
-func searchDidStartLoad(_sender: MapSearch?){
+func searchDidStartLoad(_ sender: MapSearch?){
   //Showing custom progress bar or any other additional functionality can be implemented over.
 }
 ```
