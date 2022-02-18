@@ -45,7 +45,7 @@ Start by creating a new, regular Xcode project using the “Single View Applicat
 **Download the SDK using CocoaPods (recommended)**
 1. Create a file called PodFile in your project directory.
 2. Edit the Podfile and add WoosmapIndoor SDK dependencies. Here is an example of adding the dependency
-        source 'https://github.com/sanginfolbs/woosmapindoor.git'
+        source 'https://github.com/WebGeoServices/woosmapindoor.git'
         use_frameworks!
         pod 'WoosmapIndoor'
 
@@ -57,7 +57,7 @@ Start by creating a new, regular Xcode project using the “Single View Applicat
 
 **Manual download and setup of the SDK (not recommended)**
 
-If your project cannot use CocoaPods, you have the option to manually add the SDK to your project. To achieve this, download the current version of the SDK from <<GitHub https://github.com/sanginfolbs/woosmapindoorsdk.git>> and add it to your Xcode project.
+If your project cannot use CocoaPods, you have the option to manually add the SDK to your project. To achieve this, download the current version of the SDK from <<GitHub https://github.com/WebGeoServices/woosmapindoorsdk.git>> and add it to your Xcode project.
 
 **Add Google Maps SDK**
 
@@ -67,7 +67,7 @@ Your PodFile should look like this:
 
 
       source 'https://github.com/CocoaPods/Specs.git'
-      source 'https://github.com/sanginfolbs/woosmapindoor.git'
+      source 'https://github.com/WebGeoServices/woosmapindoor.git'
       use_frameworks!
       pod 'WoosmapIndoor'
       pod 'GoogleMaps'
