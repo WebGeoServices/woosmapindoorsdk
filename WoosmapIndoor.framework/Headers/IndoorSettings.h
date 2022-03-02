@@ -6,6 +6,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "IndoorMapObject.h"
 #import "PathFormatter.h"
+#import "RouteTag.h"
 /**
  Internal map Information
  */
@@ -443,6 +444,9 @@
 
 /// Show Google map 3d buldings on map for external view
 -(BOOL)show3DBuildings;
+
+///Listing all route option with given venue
+-(NSArray<RouteTag*> *_Nonnull)getRouteTags;
 
 /**
  * Cleanup IndoorMap setting from memory

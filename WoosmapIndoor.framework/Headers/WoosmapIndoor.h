@@ -24,5 +24,6 @@
 #import "IndoorLanguage.h"
 #import "AnimatingTrainMarker.h"
 #import "TrackingAreaMarker.h"
+#import "RouteTag.h"
 
 

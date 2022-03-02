@@ -11,6 +11,7 @@
 #import "TrackingAreaMarker.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "Stopover.h"
+#import "RouteTag.h"
 
 /**
  *  Navigation Modes
@@ -661,6 +662,12 @@ Called when search route function failed
  * This property control to Navigation mode handicap/non handicap
  */
 @property (nonatomic,readwrite) BOOL preferaccessibility;
+
+/**
+ * This property listed all avalible route tags with given venue
+ */
+@property (nonatomic,readwrite) NSArray<RouteTag*> *_Nonnull routeTags;
+
 
 /**
  *  Sets the navigation mode.
