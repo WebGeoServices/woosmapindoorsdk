@@ -5,7 +5,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "RouteTag.h"
 /**
  *  Describes the drawing style of path.
  */
@@ -43,10 +42,5 @@
  *  Sets the width of the selected path.
  */
 @property (nonatomic,retain) NSNumber *selectedPathWidth;
-
-/**
- *  Sets the width of the selected path.
- */
-@property (nonatomic,retain) NSArray<RouteTag*> *routeTag;
 
 @end
