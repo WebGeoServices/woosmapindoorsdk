@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
+/// Get/Set Language info for Indoor map
 @interface IndoorLanguage : NSObject
 
 /**

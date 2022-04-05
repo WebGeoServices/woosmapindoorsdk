@@ -11,6 +11,7 @@
 #import "TrackingAreaMarker.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "Stopover.h"
+#import "RouteTag.h"
 
 /**
  *  Navigation Modes
@@ -508,6 +509,7 @@ Called when search route function failed
  * tapping on the "My Location" button) or by being updated explicitly via the camera or a
  * zero-length animation on layer.
  *
+ * @param mapView Google map Instance
  * @param gesture If YES, this is occuring due to a user gesture.
  */
 - (void)indoor:(nonnull GMSMapView *)mapView willMove:(BOOL)gesture;
@@ -516,6 +518,9 @@ Called when search route function failed
  * Called repeatedly during any animations or gestures on the map (or once, if the camera is
  * explicitly set). This may not be called for all intermediate camera positions. It is always
  * called for the final position of an animation or gesture.
+ *
+ * @param mapView Google map Instance
+ * @param position Center location on map
  */
 - (void)indoor:(nonnull GMSMapView *)mapView didChangeCameraPosition:(nonnull GMSCameraPosition * )position;
 
@@ -663,6 +668,12 @@ Called when search route function failed
 @property (nonatomic,readwrite) BOOL preferaccessibility;
 
 /**
+ * Returns/Set the list of routing tags associated for the venue.
+ */
+@property (nonatomic,readwrite) NSArray<RouteTag*> *_Nonnull routeTags;
+
+
+/**
  *  Sets the navigation mode.
  *
  *  @param mode Navigation mode type (NavigationMode_None,NavigationMode_Preview,NavigationMode_TurnByTurn)
@@ -762,8 +773,8 @@ Called when search route function failed
 *  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
 *
 *  @param startPoint     Source Coordinates
-*  @param endPoint       Destination Coordinates
-*  @param endAt             Location where path end at
+*  @param endPoints       Destination Coordinates
+*  @param endPoint             Location where path end at
 */
 -(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints endAt:(CGIndoorMapPoint)endPoint;
 
@@ -771,7 +782,7 @@ Called when search route function failed
 *  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
 *
 *  @param startPoint     Source Coordinates
-*  @param endPoint       Destination Coordinates
+*  @param endPoints       Destination Coordinates
 */
 -(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints;
 
@@ -1097,6 +1108,7 @@ Called when search route function failed
  Display poi search result on map
  
  @param searchresult List of poiids
+ @param result  callback when poi found on map else return error object
  */
 -(void)showSearchedPOIsOnMap:(nonnull NSArray *)searchresult completion:(void (^_Nonnull)(NSArray * _Nullable searchResult, NSError * _Nullable error))result;
 
@@ -1138,7 +1150,7 @@ Called when search route function failed
 /// Compute sorted list of multiple stops
 /// @param startPoint User location
 /// @param endPoints List of Stops
-/// @param endAt Location where path end at
+/// @param endPoint Location where path end at
 /// @param result  return sorted list of stops or error if any
 -(void)sortStopovers:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints endAt:(CGIndoorMapPoint)endPoint completion:(void (^_Nullable)(NSArray<Stopover *> * _Nullable sortedList, NSError * _Nullable error))result;
 

@@ -22,6 +22,8 @@ extern NSString *const PREF_BUDDYOPTIN;
 extern NSString *const PREF_CACHEVERSION;
 extern NSString *const PREF_COUNTRYCODE;
 
+
+/// Mapping Properties fetch from woosmap server
 @interface WoosmapIndoorPreferences : NSObject
 
 

@@ -2,7 +2,7 @@
 ![woosmap](https://avatars.githubusercontent.com/u/1203240?s=200&v=4)
 # Woosmap Indoor SDK
 
-The WoosmapIndoor SDK for iOS (henceforth, “The SDK”) helps developers to create indoor location based applications.
+The Woosmap Indoor SDK for iOS (henceforth, “The SDK”) helps developers to create indoor location based applications.
 The SDK has the following features:
 1. Can be used with Google Indoor maps or Custom Maps.
 2. Way-finding with turn by turn instructions.
@@ -10,19 +10,19 @@ The SDK has the following features:
 4. Search for Products or Places inside a venue.
 5. Trigger proximity alerts at geo-fenced zones for offers or advertisements.
 
-## Table of contents
 - [Woosmap Indoor SDK](#woosmap-indoor-sdk)
-  - [Table of contents](#table-of-contents)
   - [Setup](#setup)
   - [Developer Guide](#developer-guide)
     - [Displaying your first map in the application](#displaying-your-first-map-in-the-application)
     - [Interacting with the map](#interacting-with-the-map)
     - [Finding a POI on the map](#finding-a-poi-on-the-map)
     - [Highlighting/Un-highlighting a POI on the map](#highlightingun-highlighting-a-poi-on-the-map)
-    - [Wayfinding](#wayfinding)
-    - [Multi-stop itinerary](#multi-stop-itinerary)
-    - [Customizing Stopover pins in multi-stop itinerary](#customizing-stopover-pins-in-multi-stop-itinerary)
+    - [way-finding](#way-finding)
+    - [Multi-stop way-finding](#multi-stop-way-finding)
+    - [Customizing Stopover pins in multi-stop way-finding](#customizing-stopover-pins-in-multi-stop-way-finding)
+    - [Tag based way-finding](#tag-based-way-finding)
     - [Displaying Route with turn by turn instructions](#displaying-route-with-turn-by-turn-instructions)
+    - [Way finding and navigation callbacks](#way-finding-and-navigation-callbacks)
     - [Switching between multiple floors](#switching-between-multiple-floors)
     - [Detect user near Escalators/Elevators](#detect-user-near-escalatorselevators)
     - [Enabling Search](#enabling-search)
@@ -138,7 +138,7 @@ To search a POI on the map use ```findPOI``` method. This method searches map fo
 
 Use ```showPOIMarker``` method to show a marker at specific POI. This method accepts POI information in form of Dictionary object and an object of UIView class which gets rendered as a marker on the map.
 
-### Wayfinding
+### way-finding
 To display the route between two points, the ```findRoute:``` method of the SDK should be called.
 
 ``` Objective-c
@@ -166,13 +166,14 @@ IndoorMap.pathOptions={ formatter in
   return format
   }
 ```
-### Multi-stop itinerary
-Multi-stop itinerary is the feature where SDK plots the shortest possible path from the start position and the given list of points.
+### Multi-stop way-finding
+Multi-stop way-finding is the feature where SDK plots the shortest possible path from the start position and the given list of points.
 To display multi-stop itinerary path following overloaded form of findRoute method should be called.
 ``` Objective-c
   -(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints;
 ```
 Function above accepts start point and an array of Stopover object. Calling this method will also trigger the delegate’s, ```indoor:route:``` event. Just as it would when finding path between two points. **Please note** that as of now multi- stop itinerary takes maximum of six stopover points. Following screen shot shows how multi-stop itinerary gets rendered on the map.
+
 <img src="http://s3-us-west-2.amazonaws.com/documentation-assets/ios_multipath.png" width="250">
 
 Following code snippet shows and example call of multi-stop itinerary.
@@ -212,7 +213,7 @@ private func plotStopOverList(){
 }
 ```
 
-### Customizing Stopover pins in multi-stop itinerary
+### Customizing Stopover pins in multi-stop way-finding
 
 You can use ```addCustomePOI``` method in order to customize stopover pins. Following code snippet can be used to add custom pins at every stopover point.
 
@@ -229,6 +230,52 @@ IndoorMap.addCustomePOI(pointTrack)
 ```
 
 
+### Tag based way-finding
+
+Tag based routing is a way for defining for each path which type of person can use it to navigate from a location to a destination. Typical example of route tags inside a venue like an airport are:
+
+- Security employee
+- Maintenance employee
+- People with limited mobility
+- Passenger  
+
+Paths taken by above people in an airport may differ as some paths may be restricted or be exclusive for certain people.
+
+These tags are predefined for each venue and are created at the time of venue creation. Developer cannot create these tags on the fly. List of available tags can be accessed in the `IndoorSettings` object.
+
+```Swift
+
+func indoor(_ sender: Any, onLoaded isLoaded: Bool) {
+  let avalibleRoutingOptions = IndoorSettings.instance().getRouteTags()
+}        
+```
+
+`IndoorSettings.instance().getRouteTags()` returns a list of `RouteTag` objects. Each object represents a routing tag defined in the venue. `RouteTag` object can be passed to Indoor maps way-finding method which will return the path for the specified tag.
+
+Example below shows how to use route tags while finding route between two points.
+
+``` Objective-c
+indoorMapObj.routeTags = selectedRoutingOptions[0]
+
+indoorMapObj.findRoute(startLocation, destination: endLocation)  
+```
+Or
+
+``` Objective-c
+indoorMapObj.pathOptions={ format in
+      if let pathFormatOptions = format{
+          pathFormatOptions.pathColor = UIColor.red //To change the path color.
+          pathFormatOptions.pathWidth = NSNumber(value: 8.0)//Sets the width of the path
+          pathFormatOptions.borderColor = UIColor(red: 0.247, green: 0.000, blue: 0.002, alpha: 1.000) //Sets the bordercolor for the path.
+          pathFormatOptions.borderWidth = NSNumber(value: 4.0) //Sets the border width for the path.
+          pathFormatOptions.routeTag = selectedRoutingOptions[0]
+          return pathFormatOptions
+      }
+      return format
+    }
+
+    indoorMapObj.findRoute(startLocation, destination: endLocation)     
+```
 
 
 ### Displaying Route with turn by turn instructions
@@ -253,6 +300,25 @@ IndoorMap.nextStepInstruction() //Gets next step instruction.
 IndoorMap.previousStepInstruction() //Gets previous step instruction.
 ```
 Both the methods listed above will subsequently call the delegate’s ```instruction:``` method as listed above.
+
+
+### Way finding and navigation callbacks
+
+The `IndoorMapDelegate` interface raises callbacks related to way finding and navigation. They are as follows:
+
+| Callback | Description |
+| ------ | ------ |
+| `-(void)indoor:(id)mapView route:(NSArray *)routeList` | Called when way-finding is successfully executed and return path to app. |
+| `-(void)indoor:(id)mapView noRoute:(NSArray *)routeList` | Called when way-finding is successfully executed but not finding any suitable paths. |
+| `-(void)indoor:(id)mapView onNavigationError:(NSError *)errorInfo` | Called when Woosmap Indoor cloud platform fails to find a path. |
+| `-(void)indoor:(id)mapView endNavigation:(BOOL)navigationState destinationDirection:(DestinationDirection)atDirection` | Called when user reaches destination of way-finding.|
+| `func indoor(_ mapView: Any, navigationExited navigationState: Bool)` | Called when user explicitly exit way-finding.|
+| `-(void)indoor:(id)mapView instruction:(NSUInteger)pathIndex pathInfo:(NSDictionary *)routeInfo` | Called when user moves closer to one path segment than any other path segment. This listener also called when user switches to preview mode. Exposes two parameters, **pathIndex**:  Position of path segment. **routeInfo**: current path segment details|
+| `-(void)indoor:(id)mapView reRouteWithLocation:(CLLocationCoordinate2D)coordinate floor:(int)level` | Called when user deviates from the path.|
+| `-(void)indoor:(id)mapView navigationInterrupted:(BOOL)coordinate` | Called when user explicitly changes the current Segment. This may happen when user browses through the instructions for current way-finding route using navigationPager|
+| `-(void)indoor:(id)mapView onFloorChange:(int)level triggerByUserInteaction:(BOOL)isByUser` | This callback is called prior to rendering floor change markers. Use this method to create your custom floor change markers. You can inflate and return your own view to use as floor change marker. Return null to user default markers.|
+| `-(void)indoor:(id)mapview onNavigationStatusUpdated:(NSDictionary *)navigationParams` | This callback will trigger every time user's location is updated when in navigation mode.|
+
 
 ### Switching between multiple floors
 You can use the in-built floor selector in your application or you can create your custom floor selector. To disable the in-built floor selector, set the ```enableFloorSelector``` property of the ```IndoorMap``` class to ```NO```. See the code snippet below:
@@ -373,10 +439,10 @@ The SDK offers the client application to customize certain elements rendered on 
 
 |# | Customizable | Elements Image name to use|
 |---|---|---|
-|1|Blue dot – User’s current position|blue-dot.png|
-|2|Routing – Start pin|ic_go_pin.png|
-|3|Routing – End pin|ic_end_pin.png|
-|4|Routing – Level change indicator pin|ic_escalator_pin.png|
+|1|Blue dot – User’s current position|blue-dot.png (***add it in app resource folder***)|
+|2|Routing – Start pin|```func indoor(_ mapview: Any, customizeEndMarker imgPin: UIImage?) -> UIView?```|
+|3|Routing – End pin|```func indoor(_ mapview: Any, customizeStartMarker imgPin: UIImage?) -> UIView?```|
+|4|Routing – Level change indicator pin|```func indoor(_ mapview: Any, customizeLevelChangedMarker imgPin: UIImage?, mode floorChangeMode: FloorConntectedBy, movingUp up: Bool) -> UIView? ```|
 
 ## API reference
 [WoosmapIndoor Map iOS SDK Reference](https://woosmap-indoor-apidoc.s3.us-west-2.amazonaws.com/ios/index.html)

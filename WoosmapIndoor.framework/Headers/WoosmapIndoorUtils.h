@@ -23,6 +23,8 @@ extern NSString *const kFONTCOLORFORFLOOR;
 extern NSString *const kBlueDotIconPath;
 extern NSString *const kResourceBundle;
 extern NSString *const kCOLORFORCOVEREDPATH;
+
+/// Utility Class
 @interface WoosmapIndoorUtils : NSObject
 {
     NSDate *applicationStartTime;
@@ -85,7 +87,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Floor Name
  *
- *  @param level
+ *  @param level Floor number fetch from Woosmap SDK
  *
  *  @return String
  */
@@ -129,34 +131,34 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Circle shape button
  *
- *  @param source
- *  @param bordercolor
+ *  @param source Button object which circle should be apply
+ *  @param bordercolor border color of circle.in case of no border set this parameter as transparent
  */
 + (void) circleButton:(UIButton *)source withColor:(UIColor *)bordercolor;
 /**
  *  Circle shape button
  *
- *  @param source
+ *  @param source Button object which circle should be apply
  */
 + (void) circleButton:(UIButton *)source;
 /**
  *  Rounded Corners For Alert
  *
- *  @param source
+ *  @param source View which rounded corner apply
  */
 + (void) AddRoundedCornersForAlert:(UIView *)source;
 /**
  *  Add Blue Border
  *
- *  @param source
+ *  @param source View which border  apply
  */
 + (void) AddBlueBorder:(UIView *)source;
 /**
  *  make Floor Super Script
  *
- *  @param stringText
+ *  @param stringText Text which super script should apply
  *
- *  @return Super Script string
+ *  @return Super Scripted string
  */
 +(NSString *)makeFloorSuperScript:(NSString *)stringText;
 
@@ -191,7 +193,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Walking Distance in text
  *
- *  @param distanceInpx
+ *  @param distanceInpx Distance in meter
  *
  *  @return distance in minutes
  */
@@ -207,7 +209,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Create Image With View
  *
- *  @param view
+ *  @param view view which  converted to image
  *
  *  @return Image File
  */
@@ -242,7 +244,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Mark offer as seen
  *
- *  @param offer
+ *  @param offer Offer Info
  */
 -(void)setAsSeen:(NSDictionary *)offer;
 /**
@@ -254,7 +256,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Play sound
  *
- *  @param musicFile
+ *  @param musicFile waev file path
  */
 -(void)playSound:(NSURL *)musicFile;
 /**
@@ -278,7 +280,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  Convert meter to time
  *
- *  @param inMeters
+ *  @param inMeters Distance in meter
  *
  *  @return number of seconds
  */
@@ -287,7 +289,7 @@ extern NSString *const kCOLORFORCOVEREDPATH;
 /**
  *  distance To Time
  *
- *  @param inMeters
+ *  @param inMeters Distance in meter
  *
  *  @return number of seconds
  */
