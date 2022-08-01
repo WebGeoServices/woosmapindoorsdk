@@ -49,4 +49,14 @@
  */
 @property (nonatomic,retain) NSArray<RouteTag*> *routeTag;
 
+/**
+ *  Setting navigation arrow head on map UI.
+ */
+@property (nonatomic,retain) UIImage *navigationHeadMarker;
+
+/**
+ *  Manage visibility of arrow head on last step of navigation path
+ */
+@property (nonatomic,readwrite) BOOL hideNavigationHeadMarkerOnLastStep;
+
 @end

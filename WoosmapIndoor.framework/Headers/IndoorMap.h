@@ -672,6 +672,11 @@ Called when search route function failed
  */
 @property (nonatomic,readwrite) NSArray<RouteTag*> *_Nonnull routeTags;
 
+/**
+ *  Manage visibility of arrow head on last step of navigation path
+ */
+@property (nonatomic, readwrite) BOOL hideNavigationHeadMarkerOnLastStep;
+
 
 /**
  *  Sets the navigation mode.
@@ -1159,5 +1164,9 @@ Called when search route function failed
 /// @param endPoints List of Stops
 /// @param result  return sorted list of stops or error if any
 -(void)sortStopovers:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints completion:(void (^_Nullable)(NSArray<Stopover *> * _Nullable sortedList, NSError * _Nullable error))result;
+
+/// Customize navigation arrow
+/// @param image new Arrow image
+- (void)setNavigationHeadMarker:(UIImage *_Nullable)image;
 @end
 

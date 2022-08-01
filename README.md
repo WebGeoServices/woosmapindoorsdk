@@ -443,6 +443,8 @@ The SDK offers the client application to customize certain elements rendered on 
 |2|Routing – Start pin|```func indoor(_ mapview: Any, customizeEndMarker imgPin: UIImage?) -> UIView?```|
 |3|Routing – End pin|```func indoor(_ mapview: Any, customizeStartMarker imgPin: UIImage?) -> UIView?```|
 |4|Routing – Level change indicator pin|```func indoor(_ mapview: Any, customizeLevelChangedMarker imgPin: UIImage?, mode floorChangeMode: FloorConntectedBy, movingUp up: Bool) -> UIView? ```|
+|5|Navigation Head Arrow|```indoorMapObj.setNavigationHeadMarker(UIImage.init(named: "arrowHead"))indoorMapObj.hideNavigationHeadMarkerOnLastStep = True```|
+|6|Navigation Head Arrow visibility|```indoorMapObj.hideNavigationHeadMarkerOnLastStep = True/ False```|
 
 ## API reference
 [WoosmapIndoor Map iOS SDK Reference](https://woosmap-indoor-apidoc.s3.us-west-2.amazonaws.com/ios/index.html)
