@@ -778,8 +778,8 @@ Called when search route function failed
 *  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
 *
 *  @param startPoint     Source Coordinates
-*  @param endPoints       Destination Coordinates
-*  @param endPoint             Location where path end at
+*  @param endPoints    Destination Coordinates
+*  @param endPoint      Location where path end at
 */
 -(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints endAt:(CGIndoorMapPoint)endPoint;
 
@@ -787,9 +787,20 @@ Called when search route function failed
 *  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
 *
 *  @param startPoint     Source Coordinates
-*  @param endPoints       Destination Coordinates
+*  @param endPoints    Destination Coordinates
+*  @param endPoint      Location where path end at
+*  @param optimize       Maintain the same order while finding out the path
 */
--(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints;
+-(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints endAt:(CGIndoorMapPoint)endPoint optimize:(BOOL)optimize;
+
+/**
+*  Finds the path from the source to the destinations. It has an option to end the path at the entrance or inside the store. This choice is useful when a path needs to be ended at the entrance (in case of stores) or inside (in case of a POI located inside the store)
+*
+*  @param startPoint     Source Coordinates
+*  @param endPoints       Destination Coordinates
+*  @param optimize       Maintain the same order while finding out the path
+*/
+-(void)findRoute:(CGIndoorMapPoint)startPoint destinations:(NSArray<Stopover *> *_Nonnull)endPoints keepInOrder:(BOOL)optimize;
 
 
 /**
